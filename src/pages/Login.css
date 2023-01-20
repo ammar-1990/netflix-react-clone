@@ -1,0 +1,121 @@
+.login {
+    background: url('https://veneportal.com/noticias/wp-content/uploads/sites/2/2021/03/Netflix-d7bf70ec-1024x576.jpg') center no-repeat;
+    height: 100vh;
+    background-size: cover;
+    position: relative;
+}
+
+
+.login__overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.407);
+    background: linear-gradient(to top ,rgba(0, 0, 0, 0.9) 0,rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.login__content {
+    width:100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    z-index: 1;
+    position: relative;
+    padding: 20px
+}
+.login__content h1 ,.login__content p {
+    text-align: center;
+}
+
+.login__content p:first-of-type{
+    font-size: 0.9rem;
+}
+.login__content p:nth-of-type(2) {
+    font-size: 0.7rem;
+}
+.login__content  form {
+    margin-top: -3px;
+    display: flex;
+ max-width: 400px;
+ width: 100%;
+}
+
+.login__content  form input {
+    flex: 1;
+    padding: 5px;
+    outline: none;
+    border: none;
+}
+.login__content  form button {
+    border: none;
+    padding: 7px 15px;
+    font-size: 0.7rem;
+    color:white;
+    cursor: pointer;
+    background-color: #e50914;
+}
+
+
+.signIn {
+max-width: 350px;
+width: 100%;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%,-50%);
+padding:70px 50px;
+background-color: rgba(0, 0, 0, 0.727);
+display: flex;
+flex-direction: column;
+gap: 15px;
+z-index: 1;
+
+}
+
+.signIn h1 {
+    color: white;
+}
+
+.signIn__inputs input {
+width: 100%;
+margin-bottom: 4px;
+outline: none;
+border: none;
+padding: 8px;
+border-radius: 5px;
+}
+.signIn form button {
+    background-color: #e50914;
+    color:white;
+    padding: 8px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.signIn p {
+    color: gray;
+    font-size: 0.8rem;
+}
+.signIn span {
+    color: white;
+    cursor: pointer;
+}
+
+.signIn span:hover {
+    text-decoration: underline;
+}
+
+.signIn a {
+    text-decoration: none;
+}
+
