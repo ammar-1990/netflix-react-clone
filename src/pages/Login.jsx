@@ -2,23 +2,46 @@ import './Login.css'
 import Nav from '../components/Nav'
 import db from '../firebase.js'
 import { useState,useRef } from 'react'
+import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux';
+import { LOGIN } from '../features/user/userSlice';
 
 
 const Login = () => {
 
   const emailRef=useRef(null)
   const passwordRef=useRef(null)
-
+  const dispatch=useDispatch()
   const [signIn,setSignIn]=useState(false)
 const logIn =(e)=> {
 e.preventDefault()
+const auth =getAuth()
+signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
+
+dispatch(LOGIN(userCredential.user))
+emailRef.current.value='';
+passwordRef.current.value=''}).catch((error)=>{
+  console.log(error.message,error.code)
+  emailRef.current.value='';
+passwordRef.current.value=''
+})
 }
 
 
 const register =(e)=> {
- e.preventDefault()
+  const auth=getAuth()
+ e.preventDefault();
+ createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
+  dispatch(LOGIN(userCredential.user))
+  emailRef.current.value=''
+ passwordRef.current.value=''
+ }).catch((error)=>{
+  console.log(error.code,error.message)
+   emailRef.current.value=''
+ passwordRef.current.value=''
+ })
 
-//  auth.createUserWithEmailAndPassword()
+
 }
 
 
@@ -39,8 +62,8 @@ const register =(e)=> {
         </div> : <div className='signIn'>
           <h1>sign In</h1>
           <form className="signIn__inputs">
-            <input type="text" placeholder='E-MAIL'/>
-            <input type="password" placeholder='PASSWORD'/>
+            <input type="email" placeholder='E-MAIL' ref ={emailRef} required/>
+            <input type="password" placeholder='PASSWORD' ref={passwordRef} required/>
           <button onClick={logIn}>Sign In</button>
           </form>
 
