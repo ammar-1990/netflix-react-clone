@@ -1,37 +1,27 @@
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import { Routes, Route ,Navigate} from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import Profile from "./pages/Profile";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
 
 
 
+
 function App() {
 
-  const user=useSelector(state=>state.user)
+const user =useSelector(state=>state.user.user)
+ 
+useEffect(()=>{
+  localStorage.setItem('user',JSON.stringify(user))
+  console.log(user)
+},[user])
+
+
+
   const Required =({children})=>{
-  return user? children : <Navigate to='login' />
-  }
-
-
-  useEffect(()=>{
-    const auth=getAuth();
-    const unsubscribe=onAuthStateChanged(auth,(theUser)=>{
-      if(theUser)
-      {
-
-        console.log(theUser)
-      }
-      else
-      {
-
-        console.log(theUser)
-      }
-    })
-
-    return unsubscribe
-  },[])
+    return user? children : <Navigate to='/login' />
+    }
   return (
 
 
@@ -39,6 +29,7 @@ function App() {
     <div className="app">    
       <Routes>
   <Route path="/" element={<Required ><Home /></Required>} />
+  <Route path="profile" element={<Required><Profile /></Required>} />
   <Route path="login" element={<Login />} />
   </Routes>
     </div>

@@ -5,44 +5,68 @@ import { useState,useRef } from 'react'
 import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';
 import { LOGIN } from '../features/user/userSlice';
+import { useNavigate } from 'react-router-dom';
+
+
 
 
 const Login = () => {
-
+const dispatch=useDispatch()
+const navigate = useNavigate()
   const emailRef=useRef(null)
   const passwordRef=useRef(null)
-  const dispatch=useDispatch()
+ 
   const [signIn,setSignIn]=useState(false)
+  const [err,setErr]=useState('')
+
+
+
 const logIn =(e)=> {
 e.preventDefault()
+if(!emailRef.current.value && !passwordRef.current.value)
+setErr('Enter valid informations')
+else{
 const auth =getAuth()
 signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
+  dispatch(LOGIN({uid:userCredential.user.uid,
+  email:userCredential.user.email}))
+  navigate('/')
 
-dispatch(LOGIN(userCredential.user))
+
+
 emailRef.current.value='';
 passwordRef.current.value=''}).catch((error)=>{
-  console.log(error.message,error.code)
+ setErr(error.message)
   emailRef.current.value='';
 passwordRef.current.value=''
 })
-}
+}}
 
 
 const register =(e)=> {
-  const auth=getAuth()
+ 
  e.preventDefault();
+
+ if(!emailRef.current.value && !passwordRef.current.value)
+setErr('Enter valid informations')
+else {
+
+
+ const auth=getAuth()
  createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
-  dispatch(LOGIN(userCredential.user))
+  dispatch(LOGIN({uid:userCredential.user.uid,
+    email:userCredential.user.email}))
+    navigate('/')
   emailRef.current.value=''
  passwordRef.current.value=''
  }).catch((error)=>{
-  console.log(error.code,error.message)
+  setErr(error.message)
    emailRef.current.value=''
  passwordRef.current.value=''
  })
 
 
-}
+}}
 
 
 
@@ -62,12 +86,14 @@ const register =(e)=> {
         </div> : <div className='signIn'>
           <h1>sign In</h1>
           <form className="signIn__inputs">
-            <input type="email" placeholder='E-MAIL' ref ={emailRef} required/>
-            <input type="password" placeholder='PASSWORD' ref={passwordRef} required/>
+            <input type="email" placeholder='E-MAIL' ref ={emailRef} required onChange={()=>setErr('')}/>
+            <input type="password" placeholder='PASSWORD' ref={passwordRef} required onChange={()=>setErr('')}/>
           <button onClick={logIn}>Sign In</button>
           </form>
 
           <p>New to Netflix? <span onClick={register}>Sign up now.</span></p>
+
+          {err && <p className='err'>{err}</p>}
           </div>}  
         <div className='login__overlay' />
 

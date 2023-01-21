@@ -1,0 +1,106 @@
+.profile {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.profile__container {
+    max-width: 600px;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: white;
+    padding-inline: 15px;
+
+    
+}
+
+.profile__content {
+    display: flex;
+    gap: 15px;
+}
+
+@media(max-width:444px) {
+    .profile__content {
+        flex-direction: column;
+    }
+}
+
+.profile__content img {
+    max-height: 75px;
+}
+
+@media(max-width:444px) {
+    .profile__content img {
+        align-self: flex-start;
+    }
+}
+
+.profile__info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+
+}
+
+.profile__info .email {
+    background-color: gray;
+    padding:8px;
+    font-size: 0.7rem;
+}
+
+.profile__info .currentPlans {
+    border-bottom: 1px gray solid;
+    padding-bottom: 5px;
+}
+
+.profile__info .date {
+    color: gray;
+    font-size: 0.7rem;
+}
+
+
+.profile__info .subscribes {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.profile__info .subscribes div {
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.profile__info .subscribes div span {
+    color: gray;
+    font-size: 0.7rem;
+}
+
+.profile__info .subscribes div button {
+    border: none;
+    outline: none;
+    padding: 7px 15px;
+    color: white;
+    background-color:#e50914;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.profile__info .subscribes div:nth-of-type(3) button {
+    background-color: gray;
+}
+
+.profile__info > button {
+    border: none;
+    outline: none;
+    padding: 7px 15px;
+    color: white;
+    background-color:#e50914;
+    cursor: pointer;
+    font-weight: bold;
+}

@@ -41,3 +41,14 @@ color: black;
     height:175px;
     background: linear-gradient(180deg,transparent,rgba(0, 0, 0, 0.5),#111);
 }
+
+@media (max-width:880px) {
+  .banner__title {
+    font-size: 1.1rem;
+  }
+
+  .banner__desc{
+    max-width: 300px;
+    width: 100%;
+  }
+}
