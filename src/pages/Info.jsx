@@ -22,16 +22,16 @@ axios.get(`/movie/${params.id}?api_key=${API_KEY}`).then(res=>{
 <div className="info__content">
 <h1 className="info__title">{data.original_title}</h1>
 <p className="info__overview">{data.overview}.</p>
-<span className="info__budget">Budget : 
-${data.budget}.</span>
+{ data.budget ?<span className="info__budget">Budget : 
+${data.budget}.</span> : ''}
 
 <span className="info__date">Release Date :{data.release_date}.</span>
-<span className='revenue
+{data.revenue ?  <span className='revenue
 '>revenue :${data.revenue
 }.
-</span>
+</span> : ''}
 
-<span className='info__time'>Run Time : {data.runtime} minutes.</span>
+{data.runtime? <span className='info__time'>Run Time : {data.runtime} minutes.</span>: ''}
 
 <span className='info__status'> Status :{data.status}</span>
 

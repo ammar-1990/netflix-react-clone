@@ -23,6 +23,10 @@
     margin-left: 10px;
 }
 
+.row_container a.dis {
+    pointer-events: none;
+}
+
 .row_poster {
     max-height: 100px;
    
