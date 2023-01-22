@@ -19,9 +19,13 @@
 .row_container::-webkit-scrollbar {
     display: none;
 }
+.row_container a {
+    margin-left: 10px;
+}
+
 .row_poster {
     max-height: 100px;
-    margin-left: 10px;
+   
     object-fit: contain;
     transition: 0.3s;
 }

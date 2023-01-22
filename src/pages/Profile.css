@@ -73,6 +73,11 @@
 .profile__info .subscribes div {
     display: flex;
     justify-content: space-between;
+    opacity: 0.8;
+}
+
+.profile__info .subscribes div:hover {
+    opacity :1;
 }
 
 

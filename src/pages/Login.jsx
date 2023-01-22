@@ -1,6 +1,6 @@
 import './Login.css'
 import Nav from '../components/Nav'
-import db from '../firebase.js'
+
 import { useState,useRef } from 'react'
 import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from 'react-redux';

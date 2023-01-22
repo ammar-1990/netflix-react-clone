@@ -4,6 +4,8 @@ import { Routes, Route ,Navigate} from "react-router-dom";
 import Profile from "./pages/Profile";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";
+import Info from './pages/Info'
+
 
 
 
@@ -29,8 +31,10 @@ useEffect(()=>{
     <div className="app">    
       <Routes>
   <Route path="/" element={<Required ><Home /></Required>} />
-  <Route path="profile" element={<Required><Profile /></Required>} />
-  <Route path="login" element={<Login />} />
+  <Route path="/profile" element={<Required><Profile /></Required>} />
+  <Route path='/:id' element={<Required><Info /></Required>} />
+  <Route path="/login" element={<Login />} />
+  
   </Routes>
     </div>
   );
