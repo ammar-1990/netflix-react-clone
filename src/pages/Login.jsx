@@ -6,6 +6,7 @@ import {getAuth, createUserWithEmailAndPassword,signInWithEmailAndPassword } fro
 import { useDispatch } from 'react-redux';
 import { LOGIN } from '../features/user/userSlice';
 import { useNavigate } from 'react-router-dom';
+import {auth} from '../firebase'
 
 
 
@@ -26,7 +27,7 @@ e.preventDefault()
 if(!emailRef.current.value && !passwordRef.current.value)
 setErr('Enter valid informations')
 else{
-const auth =getAuth()
+
 signInWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
   dispatch(LOGIN({uid:userCredential.user.uid,
   email:userCredential.user.email}))
@@ -52,7 +53,7 @@ setErr('Enter valid informations')
 else {
 
 
- const auth=getAuth()
+ 
  createUserWithEmailAndPassword(auth,emailRef.current.value,passwordRef.current.value).then((userCredential)=>{
   dispatch(LOGIN({uid:userCredential.user.uid,
     email:userCredential.user.email}))
